@@ -3,8 +3,6 @@ import FeatureItem from "../components/FeatureItem";
 import Footer from "../components/Footer";
 
 export default function Home(){
-    //REACT ROUTER ==> récupérer donnée API
-    // Redux : State management
     return (
         <div>
             <Header />
