@@ -3,7 +3,7 @@ import Form from "../components/Form";
 import Footer from "../components/Footer";
 export default function SignIn(){
     return (
-        <div>
+        <>
             <Header />
             <main className="main bg-dark">
                 <section className="sign-in-content">
@@ -13,6 +13,6 @@ export default function SignIn(){
                 </section>
             </main>
             <Footer />
-        </div>
+        </>
     )
 }

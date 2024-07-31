@@ -1,27 +1,32 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"; // pour simplifier les requêtes
 
+// Interface pour l'état utilisateur
 interface UserState {
   profile: Profile;
   isSignedIn: boolean;
   token: string;
 }
 
+// Interface pour les données du formulaire d'édition du nom/prénon de l'utilisateur
 export interface EditFormData {
   firstName: string;
   lastName: string;
 }
 
+// Interface pour les données du formulaire de connexion
 export interface UserFormData {
   username: string;
   password: string;
 }
 
+// Interface pour les données d'authentification récupérées dans la requête de connexion
 interface LoginPayload {
   token: string;
   profile: Profile;
 }
 
+// Interface pour le profil utilisateur
 export interface Profile {
   email: string;
   firstName: string;
@@ -31,7 +36,7 @@ export interface Profile {
   id: string;
 }
 
-//let
+// Définition de l'état initial de l'utilisateur
 const initialState: UserState = {
   profile: {
     email: "",
@@ -45,41 +50,47 @@ const initialState: UserState = {
   token: "",
 };
 
+// Création du slice utilisateur avec Redux Toolkit
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    // Action pour déconnecter l'utilisateur
     logOut: () => initialState,
   },
   extraReducers: (builder) => {
     builder
       .addCase(loginAsync.pending, (state) => {
+        // Lorsque la requête de connexion est en attente
         state.token = "";
         state.isSignedIn = false;
       })
       .addCase(
         loginAsync.fulfilled,
         (state, action: PayloadAction<LoginPayload>) => {
-          // state représente l'état actuel auquel on applique une "action" (ici, on lui ajoute le token)
-          // Le token est récupéré par la fonction loginAsync
+          // Lorsque la requête de connexion est réussie
           state.token = action.payload.token;
           state.profile = action.payload.profile;
           state.isSignedIn = true;
         }
       )
       .addCase(loginAsync.rejected, (state) => {
+        // Lorsque la requête de connexion échoue
         state.token = "";
         state.isSignedIn = false;
       })
       .addCase(editAsync.fulfilled, (state, action: PayloadAction<Profile>) => {
+        // Lorsque la requête d'édition du profil est réussie
         state.profile = action.payload;
       });
   },
 });
 
+// Thunk pour la connexion utilisateur
 export const loginAsync = createAsyncThunk(
   "user/loginAsync",
   async (formData: UserFormData): Promise<LoginPayload> => {
+    // Requête pour obtenir le token
     const tokenResponse = await axios.post(
       "http://localhost:3001/api/v1/user/login",
       {
@@ -88,6 +99,7 @@ export const loginAsync = createAsyncThunk(
       }
     );
     const profileResponse = await axios.post(
+      // Requête pour obtenir le profil utilisateur
       "http://localhost:3001/api/v1/user/profile",
       {},
       { headers: { Authorization: `Bearer ${tokenResponse.data.body.token}` } }
@@ -99,9 +111,11 @@ export const loginAsync = createAsyncThunk(
   }
 );
 
+// Thunk pour l'édition du profil utilisateur
 export const editAsync = createAsyncThunk(
   "user/editAsync",
   async (editData: EditFormData, api): Promise<Profile> => {
+    // Requête pour mettre à jour le profil utilisateur
     const response = await axios.put(
       "http://localhost:3001/api/v1/user/profile",
       {
@@ -120,5 +134,6 @@ export const editAsync = createAsyncThunk(
   }
 );
 
+// Exportation du reducer et des actions
 export default userSlice.reducer;
 export const { logOut } = userSlice.actions;
