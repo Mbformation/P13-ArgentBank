@@ -40,8 +40,8 @@ export default function Hero() {
                         <input type="text" id="last-name" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
                     </div>
                     <div className="buttons">
+                        <button className="validate-button" onClick={updateName}>Save</button> 
                         <button className="cancel-button" onClick={cancel}>Cancel</button>
-                        <button className="validate-button" onClick={updateName}>Valider</button> 
                     </div>
                 </div>}
 

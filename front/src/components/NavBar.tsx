@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import LogOut from "./LogOut";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 export default function NavBar() {
@@ -19,7 +21,6 @@ export default function NavBar() {
             <div>
                 {!isSignedIn && <NavLink to="/signin" className="main-nav-item">
                     <i className="fa fa-user-circle"></i> 
-                                        {/* fontawsome */}
                     Sign In
                 </NavLink> }
 
