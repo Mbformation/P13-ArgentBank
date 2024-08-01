@@ -42,7 +42,7 @@ export default function Form() {
     }
     return (
         <>
-            { isSignedIn ? <Navigate to="/user" replace={true} /> :
+            { isSignedIn ? <Navigate to="/profile" replace={true} /> :
             <form method="post" onSubmit={handleSubmit}>
                 <InputText name="Username" />
                 <InputText name="Password" />

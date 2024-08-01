@@ -19,11 +19,10 @@ export default function NavBar() {
             </NavLink>
             <h1 className="sr-only">Argent Bank</h1>
             <div>
-                {!isSignedIn && <NavLink to="/signin" className="main-nav-item">
+                {!isSignedIn && <NavLink to="/login" className="main-nav-item">
                     <i className="fa fa-user-circle"></i> 
                     Sign In
                 </NavLink> }
-
                 {isSignedIn && <LogOut />}
 
                 
