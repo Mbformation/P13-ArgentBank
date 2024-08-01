@@ -30,7 +30,7 @@ export default function Hero() {
     return (
         <div className="header">
             <h1>Welcome back<br />
-                {!editMode && <>{profile.firstName} {profile.lastName} </>}
+                {!editMode && <>{profile.firstName} {profile.lastName}</>}!
             </h1>
             {!editMode && <button className="edit-button" onClick={() => setEditMode(true)}>Edit Name</button>}
             {editMode && 
