@@ -5,7 +5,7 @@ import Hero from "../components/Hero"
 
 export default function User(){
     return (
-        <div>
+        <>
             <Header />
             <main className="main bg-dark">
                 <Hero />
@@ -24,6 +24,6 @@ export default function User(){
                     description="Current Balance"/>
             </main>
             <Footer />
-        </div>
+        </>
     )
 }
