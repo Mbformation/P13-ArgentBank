@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import formReducer from "./form/formSlice";
 import userReducer from "./user/userSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -16,6 +17,7 @@ const persistedUserReducer = persistReducer(persistConfig, userReducer);
 // Configuration du store Redux
 export const store = configureStore({
   reducer: {
+    form: formReducer,
     user: persistedUserReducer, // Ajout du reducer persistant au store
   },
   middleware: (getDefaultMiddleware) =>
