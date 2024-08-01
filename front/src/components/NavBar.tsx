@@ -6,8 +6,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 
+// Composant NavBar
 export default function NavBar() {
-    const isSignedIn = useSelector((state: RootState) => state.user.isSignedIn);
+    const isSignedIn = useSelector((state: RootState) => state.user.isSignedIn); // récupération de l'état connecté
     return (
         <nav className="main-nav">
             <NavLink to="/" className="main-nav-logo">
@@ -23,7 +24,7 @@ export default function NavBar() {
                     <i className="fa fa-user-circle"></i> 
                     Sign In
                 </NavLink> }
-                {isSignedIn && <LogOut />}
+                 {isSignedIn && <LogOut />} {/* On affiche le composant LogOut lorsque l'utilisateur est connecté*/}
 
                 
             </div>

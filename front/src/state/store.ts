@@ -17,7 +17,7 @@ const persistedUserReducer = persistReducer(persistConfig, userReducer);
 // Configuration du store Redux
 export const store = configureStore({
   reducer: {
-    form: formReducer,
+    form: formReducer, // reducer pour la partie formulaire
     user: persistedUserReducer, // Ajout du reducer persistant au store
   },
   middleware: (getDefaultMiddleware) =>

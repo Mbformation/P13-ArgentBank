@@ -3,6 +3,8 @@ export interface FeatureItemProps {
     title: string;
     description: string;
 }
+
+// Composant pour un item de la page d'accueil
 export default function FeatureItem(props: FeatureItemProps) {
     return (
         <div className="feature-item">

@@ -7,6 +7,7 @@ export interface InputTextProps {
     name: string;
 }
 
+// Composant InputText
 export default function InputText(props: InputTextProps) {
     const dispatch = useDispatch<AppDispatch>();
   

@@ -8,6 +8,7 @@ import {persistor} from "../state/store";
 import { NavLink } from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
+// Composant SignIn de la page login
 export default function SignIn(){
 
     const dispatch = useDispatch<AppDispatch>();
@@ -21,12 +22,12 @@ export default function SignIn(){
             password,
         } 
         e.preventDefault();
-        checkRememberMe(formData.rememberMe);
-        dispatch(loginAsync(formData));
+        checkRememberMe();
+        dispatch(loginAsync(credentials));
         dispatch(resetFormData());
     }
 
-    function checkRememberMe(isRememberMe: boolean) {
+    function checkRememberMe() {
         if (formData.rememberMe) {
             persistor.persist();
           } else {

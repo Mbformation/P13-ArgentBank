@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import FeatureItem from "../components/FeatureItem";
 import Footer from "../components/Footer";
 
+// Composant page d'accueil
 export default function Home(){
     return (
         <div>

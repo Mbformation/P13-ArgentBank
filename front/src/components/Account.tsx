@@ -3,6 +3,8 @@ export interface AccountProps {
     amount: string;
     description: string;
 }
+
+// Composant pour un compte
 export default function Account(props: AccountProps) {
     return (
         <section className="account">

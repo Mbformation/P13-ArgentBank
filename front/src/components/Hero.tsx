@@ -3,6 +3,7 @@ import { AppDispatch, RootState } from "../state/store";
 import { useState } from "react";
 import { editAsync, EditFormData } from "../state/user/userSlice";
 
+// Composant Hero de la page profil
 export default function Hero() {
     const profile = useSelector((state: RootState) => state.user.profile);
     const dispatch = useDispatch<AppDispatch>();

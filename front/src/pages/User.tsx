@@ -5,6 +5,7 @@ import Hero from "../components/Hero"
 import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 
+// Composant User pour la page profil
 export default function User(){
     const isSignedIn = useSelector((state: RootState) => state.user.isSignedIn);
     return (
